@@ -27,8 +27,8 @@ class GameOverFragment : Fragment() {
 		val record = (activity as MainActivity)?.record
 		binding.toolbar.record.text = "Max record: $record"
 
-		binding.restartButton.setOnClickListener { (activity as MainActivity)?.onNavigationItemSelected(1) }
-		binding.menuButton.setOnClickListener { (activity as MainActivity)?.onNavigationItemSelected(3) }
+		binding.restartButton.setOnClickListener { (activity as MainActivity)?.onNavigationItemSelected(2) }
+		binding.menuButton.setOnClickListener { (activity as MainActivity)?.onNavigationItemSelected(4) }
 
 		return binding.root
 	}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/light_orange">
+
+	<include layout="@layout/toolbar"
+		android:id="@+id/toolbar"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Choose your difficulty:"
+			android:gravity="center"
+			style="@style/MyTextStyle"/>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/play_button_bg"
+			style="@style/MyTextStyle"
+			android:textColor="@color/dark_orange"
+			android:text="Easy"
+			android:id="@+id/easy_button"
+			android:layout_margin="2dp"/>
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/play_button_bg"
+			style="@style/MyTextStyle"
+			android:textColor="@color/dark_orange"
+			android:text="Normal"
+			android:id="@+id/normal_button"
+			android:layout_margin="2dp"/>
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/play_button_bg"
+			style="@style/MyTextStyle"
+			android:textColor="@color/dark_orange"
+			android:text="Hard"
+			android:id="@+id/hard_button"
+			android:layout_margin="2dp"/>
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

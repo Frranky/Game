@@ -17,6 +17,7 @@ class GameFragment : Fragment() {
 	private lateinit var binding: FragmentGameBinding
 	var score = 0
 	var flag = 0
+	var moleDuration: Long = 0
 	private var gameTimer: CountDownTimer? = null
 	private var moleInHole: Array<Boolean> =
 		arrayOf(
@@ -30,6 +31,13 @@ class GameFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View? {
 		binding = FragmentGameBinding.inflate(inflater, container, false)
+
+		when((activity as MainActivity)?.difficulty) {
+			1 -> moleDuration = 800
+			2 -> moleDuration = 500
+			3 -> moleDuration = 300
+		}
+
 		return binding.root
 	}
 
@@ -68,7 +76,7 @@ class GameFragment : Fragment() {
 			override fun onFinish() {
 				hideAllMole()
 				(activity as MainActivity)?.score = score
-				(activity as MainActivity)?.onNavigationItemSelected(2)
+				(activity as MainActivity)?.onNavigationItemSelected(3)
 			}
 		}.start()
 	}
@@ -85,7 +93,7 @@ class GameFragment : Fragment() {
 					startGame()
 				}
 			}
-		}, 500)
+		}, moleDuration)
 	}
 
 	private fun checkMole(hole: Int) {
