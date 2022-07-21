@@ -35,7 +35,7 @@ class GameFragment : Fragment() {
 		when((activity as MainActivity)?.difficulty) {
 			1 -> moleDuration = 800
 			2 -> moleDuration = 500
-			3 -> moleDuration = 300
+			3 -> moleDuration = 400
 		}
 
 		return binding.root
