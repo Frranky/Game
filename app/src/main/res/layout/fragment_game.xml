@@ -84,5 +84,14 @@
 			<include layout="@layout/mole_button"
 				android:id="@+id/button9"/>
 		</LinearLayout>
+
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@drawable/play_button_bg"
+			style="@style/MyTextStyle"
+			android:textColor="@color/dark_orange"
+			android:text="Play"
+			android:id="@+id/play_button"/>
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

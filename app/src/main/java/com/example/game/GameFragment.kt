@@ -16,6 +16,7 @@ class GameFragment : Fragment() {
 
 	private lateinit var binding: FragmentGameBinding
 	var score = 0
+	var flag = 0
 	private var gameTimer: CountDownTimer? = null
 	private var moleInHole: Array<Boolean> =
 		arrayOf(
@@ -35,18 +36,26 @@ class GameFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		binding.toolbar.record.text = "Score: $score"
-		startGameTimer(30000)
-		startGame()
-		binding.button1.root.setOnClickListener { checkMole(0) }
-		binding.button2.root.setOnClickListener { checkMole(1) }
-		binding.button3.root.setOnClickListener { checkMole(2) }
-		binding.button4.root.setOnClickListener { checkMole(3) }
-		binding.button5.root.setOnClickListener { checkMole(4) }
-		binding.button6.root.setOnClickListener { checkMole(5) }
-		binding.button7.root.setOnClickListener { checkMole(6) }
-		binding.button8.root.setOnClickListener { checkMole(7) }
-		binding.button9.root.setOnClickListener { checkMole(8) }
-
+		binding.playButton.setOnClickListener {
+			if(flag == 0) {
+				startGameTimer(30000)
+				startGame()
+				binding.button1.root.setOnClickListener { checkMole(0) }
+				binding.button2.root.setOnClickListener { checkMole(1) }
+				binding.button3.root.setOnClickListener { checkMole(2) }
+				binding.button4.root.setOnClickListener { checkMole(3) }
+				binding.button5.root.setOnClickListener { checkMole(4) }
+				binding.button6.root.setOnClickListener { checkMole(5) }
+				binding.button7.root.setOnClickListener { checkMole(6) }
+				binding.button8.root.setOnClickListener { checkMole(7) }
+				binding.button9.root.setOnClickListener { checkMole(8) }
+				binding.playButton.text = "Stop"
+				flag++
+			}
+			else {
+				startGameTimer(0)
+			}
+		}
 	}
 
 	private fun startGameTimer(timeMillis: Long) {
@@ -101,30 +110,30 @@ class GameFragment : Fragment() {
 
 	private fun showMole(hole: Int) {
 		when (hole + 1) {
-			1 -> binding.button1.root.setBackgroundColor(Color.RED)
-			2 -> binding.button2.root.setBackgroundColor(Color.RED)
-			3 -> binding.button3.root.setBackgroundColor(Color.RED)
-			4 -> binding.button4.root.setBackgroundColor(Color.RED)
-			5 -> binding.button5.root.setBackgroundColor(Color.RED)
-			6 -> binding.button6.root.setBackgroundColor(Color.RED)
-			7 -> binding.button7.root.setBackgroundColor(Color.RED)
-			8 -> binding.button8.root.setBackgroundColor(Color.RED)
-			9 -> binding.button9.root.setBackgroundColor(Color.RED)
+			1 -> binding.button1.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			2 -> binding.button2.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			3 -> binding.button3.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			4 -> binding.button4.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			5 -> binding.button5.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			6 -> binding.button6.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			7 -> binding.button7.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			8 -> binding.button8.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
+			9 -> binding.button9.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_red)
 		}
 		moleInHole[hole] = true
 	}
 
 	private fun hideMole(hole: Int) {
 		when (hole + 1) {
-			1 -> binding.button1.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			2 -> binding.button2.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			3 -> binding.button3.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			4 -> binding.button4.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			5 -> binding.button5.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			6 -> binding.button6.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			7 -> binding.button7.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			8 -> binding.button8.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
-			9 -> binding.button9.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg)
+			1 -> binding.button1.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			2 -> binding.button2.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			3 -> binding.button3.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			4 -> binding.button4.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			5 -> binding.button5.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			6 -> binding.button6.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			7 -> binding.button7.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			8 -> binding.button8.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
+			9 -> binding.button9.root.background = ContextCompat.getDrawable(this.requireContext(), R.drawable.button_bg_white)
 		}
 		moleInHole[hole] = false
 	}
